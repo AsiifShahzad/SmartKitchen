@@ -1,1 +1,1 @@
-# Detox.Ai
+# SmartKitchen
