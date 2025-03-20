@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshTrack - Authentication</title>
+  <link rel="stylesheet" href="signstyle.css">
+  
+</head>
+<body>
+  <div class="flex min-h-screen flex-col bg-dark text-white">
+    <div class="flex min-h-screen flex-col items-center justify-center px-4 py-12">
+      <a href="index.html" class="mb-8 flex items-center justify-center text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-green">
+          <path d="M2 22c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+          <path d="M2 17c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+          <path d="M2 12c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+        </svg>
+        <span class="ml-2 text-2xl font-bold">FreshTrack</span>
+      </a>
+      
+      <div class="w-full max-w-md space-y-6">
+        <!-- Main Authentication Container -->
+        <div id="auth-container">
+          <!-- Tabs Navigation -->
+          <div class="tabs">
+            <div class="tabs-list">
+              <button class="tab-trigger active" data-tab="sign-in">Sign In</button>
+              <button class="tab-trigger" data-tab="sign-up">Sign Up</button>
+            </div>
+            
+            <!-- Sign In Tab Content -->
+            <div id="sign-in-content" class="tab-content active">
+              <div class="space-y-2 text-center mb-6">
+                <h1 class="text-3xl font-bold">Welcome Back</h1>
+                <p class="text-muted">Sign in to your FreshTrack account</p>
+              </div>
+              
+              <div class="card p-6 animate-fadeIn">
+                <form id="sign-in-form" class="space-y-4">
+                  <div class="form-group">
+                    <label for="signin-email" class="form-label">Email</label>
+                    <input 
+                      type="email" 
+                      id="signin-email" 
+                      class="form-input" 
+                      placeholder="Enter your email" 
+                      autocomplete="email"
+                      required
+                    >
+                    <div class="form-error" id="signin-email-error"></div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="signin-password" class="form-label">Password</label>
+                    <div class="relative">
+                      <input 
+                        type="password" 
+                        id="signin-password" 
+                        class="form-input form-input-password" 
+                        placeholder="Enter your password" 
+                        autocomplete="current-password"
+                        required
+                      >
+                      <button 
+                        type="button" 
+                        class="btn-icon absolute right-0 top-0 h-full px-3 py-2"
+                        id="signin-toggle-password"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon hidden">
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                        <span class="sr-only">Toggle password visibility</span>
+                      </button>
+                    </div>
+                    <div class="form-error" id="signin-password-error"></div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                      <input type="checkbox" id="remember-me" class="form-checkbox">
+                      <label for="remember-me" class="text-sm font-medium text-white">Remember me</label>
+                    </div>
+                    
+                    <button 
+                      type="button" 
+                      class="btn-link"
+                      id="forgot-password-link"
+                    >
+                      Forgot password?
+                    </button>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    class="btn btn-primary w-full"
+                    id="signin-button"
+                  >
+                    <span id="signin-button-text">Sign In</span>
+                    <span id="signin-spinner" class="hidden">
+                      <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Signing in...
+                    </span>
+                  </button>
+                </form>
+              </div>
+            </div>
+            
+            <!-- Sign Up Tab Content -->
+            <div id="sign-up-content" class="tab-content">
+              <div class="space-y-2 text-center mb-6">
+                <h1 class="text-3xl font-bold">Create Account</h1>
+                <p class="text-muted">Join FreshTrack to start reducing food waste</p>
+              </div>
+              
+              <div class="card p-6 animate-fadeIn">
+                <form id="sign-up-form" class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label for="signup-username" class="form-label">Username</label>
+                      <input 
+                        type="text" 
+                        id="signup-username" 
+                        class="form-input" 
+                        placeholder="Choose a username" 
+                        required
+                        minlength="3"
+                      >
+                      <div class="form-error" id="signup-username-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="signup-fullname" class="form-label">Full Name</label>
+                      <input 
+                        type="text" 
+                        id="signup-fullname" 
+                        class="form-input" 
+                        placeholder="Enter your full name" 
+                        required
+                        minlength="2"
+                      >
+                      <div class="form-error" id="signup-fullname-error"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="signup-email" class="form-label">Email</label>
+                    <input 
+                      type="email" 
+                      id="signup-email" 
+                      class="form-input" 
+                      placeholder="Enter your email" 
+                      autocomplete="email"
+                      required
+                    >
+                    <div class="form-error" id="signup-email-error"></div>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label for="signup-dob" class="form-label">Date of Birth</label>
+                      <input 
+                        type="date" 
+                        id="signup-dob" 
+                        class="form-input" 
+                        required
+                      >
+                      <div class="form-error" id="signup-dob-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="signup-gender" class="form-label">Gender (Optional)</label>
+                      <select id="signup-gender" class="form-select">
+                        <option value="" selected>Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="non-binary">Non-binary</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="signup-password" class="form-label">Password</label>
+                    <div class="relative">
+                      <input 
+                        type="password" 
+                        id="signup-password" 
+                        class="form-input form-input-password" 
+                        placeholder="Create a password" 
+                        autocomplete="new-password"
+                        required
+                        minlength="8"
+                      >
+                      <button 
+                        type="button" 
+                        class="btn-icon absolute right-0 top-0 h-full px-3 py-2"
+                        id="signup-toggle-password"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon hidden">
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                        <span class="sr-only">Toggle password visibility</span>
+                      </button>
+                    </div>
+                    <div class="form-error" id="signup-password-error"></div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="signup-confirm-password" class="form-label">Confirm Password</label>
+                    <div class="relative">
+                      <input 
+                        type="password" 
+                        id="signup-confirm-password" 
+                        class="form-input form-input-password" 
+                        placeholder="Confirm your password" 
+                        autocomplete="new-password"
+                        required
+                      >
+                      <button 
+                        type="button" 
+                        class="btn-icon absolute right-0 top-0 h-full px-3 py-2"
+                        id="signup-toggle-confirm-password"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon hidden">
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                        <span class="sr-only">Toggle password visibility</span>
+                      </button>
+                    </div>
+                    <div class="form-error" id="signup-confirm-password-error"></div>
+                  </div>
+                  
+                  <div class="form-group p-4 border rounded-md">
+                    <div class="flex flex-row items-start space-x-3">
+                      <input type="checkbox" id="terms-accepted" class="form-checkbox" required>
+                      <div class="space-y-1 leading-none">
+                        <label for="terms-accepted" class="text-white">
+                          I agree to the <a href="#" class="text-green hover:underline">Terms of Service</a> and <a href="#" class="text-green hover:underline">Privacy Policy</a>
+                        </label>
+                        <div class="form-error" id="terms-accepted-error"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    class="btn btn-primary w-full"
+                    id="signup-button"
+                  >
+                    <span id="signup-button-text">Create Account</span>
+                    <span id="signup-spinner" class="hidden">
+                      <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Creating account...
+                    </span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Forgot Password Container -->
+        <div id="forgot-password-container" class="hidden">
+          <div class="space-y-2 text-center mb-6">
+            <h1 class="text-3xl font-bold">Forgot Password</h1>
+            <p class="text-muted">Enter your email and we'll send you a reset link</p>
+          </div>
+          
+          <div class="card p-6 animate-fadeIn">
+            <form id="forgot-password-form" class="space-y-4">
+              <div class="form-group">
+                <label for="forgot-email" class="form-label">Email</label>
+                <input 
+                  type="email" 
+                  id="forgot-email" 
+                  class="form-input" 
+                  placeholder="Enter your email address" 
+                  autocomplete="email"
+                  required
+                >
+                <div class="form-error" id="forgot-email-error"></div>
+              </div>
+              
+              <div class="flex gap-3 pt-2">
+                <button 
+                  type="button" 
+                  class="btn btn-outline flex-1"
+                  id="forgot-cancel-button"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary flex-1"
+                  id="forgot-submit-button"
+                >
+                  <span id="forgot-button-text">Send Reset Link</span>
+                  <span id="forgot-spinner" class="hidden">
+                    <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Reset Password Success Container -->
+        <div id="reset-success-container" class="hidden">
+          <div class="card p-6 animate-fadeIn">
+            <div class="text-center space-y-4">
+              <div class="mx-auto w-12 h-12 rounded-full bg-green-transparent flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green">
+                  <path d="M22 2L11 13"></path>
+                  <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-white">Check Your Email</h3>
+              <p class="text-muted">
+                We've sent a password reset link to your email address. Please check your inbox and follow the instructions.
+              </p>
+              <div class="pt-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="back-to-signin-button"
+                >
+                  Back to Sign In
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+  <script src="signscript.js"></script>
+</body>
+</html>
