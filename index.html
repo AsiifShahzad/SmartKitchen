@@ -1,50 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>WebApp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshTrack</title>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
-
-<body>
-    <div class="div1">
-        <h3 class="heading-3">
-            AI-Powered Smart Grocery & Food Waste Management
-        </h3>
-        <h1 class="heading-1">Revolutionize your grocery shopping, reduce food waste, and save money with AI assistance.
-        </h1>
-        <button class="btn1">Get Started</button>
+<body class="flex flex-col min-h-screen bg-dark">
+  <header class="px-4 lg:px-6 h-14 flex items-center">
+    <a class="flex items-center justify-center" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-green">
+        <path d="M2 22c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+        <path d="M2 17c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+        <path d="M2 12c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+      </svg>
+      <span class="ml-2 text-xl font-bold text-white">FreshTrack</span>
+    </a>
+    <nav class="ml-auto flex gap-4 sm:gap-6">
+      <a class="text-sm font-medium hover:underline underline-offset-4 text-white" href="#features">Features</a>
+      <a class="text-sm font-medium hover:underline underline-offset-4 text-white" href="#how-it-works">How It Works</a>
+    </nav>
+  </header>
+  <main class="flex-1">
+    <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+      <div class="container px-4 md:px-6">
+        <div class="grid gap-6 lg:grid-cols-2 lg:gap-12">
+          <div class="flex flex-col justify-center space-y-4">
+            <div class="space-y-2">
+              <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-white">Never Waste Food Again with AI-Powered Expiry Tracking</h1>
+              <p class="max-w-[600px] text-muted-foreground md:text-xl">
+                FreshTrack uses advanced AI to monitor your food items, send timely reminders, and help you reduce waste
+                while saving money.
+              </p>
+            </div>
+            <div class="flex flex-col gap-2 min-[400px]:flex-row">
+              <a href="#learn-more" class="button button-secondary">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-12 md:py-24 lg:py-32 bg-dark-lighter" id="features">
+      <div class="container px-4 md:px-6">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <div class="space-y-2">
+            <div class="inline-block rounded-lg bg-green px-3 py-1 text-sm text-dark">
+              Smart Features
+            </div>
+            <h2 class="text-3xl font-bold tracking-tighter md:text-4xl text-white">
+              AI-Powered Food Management
+            </h2>
+            <p class="max-w-[900px] text-muted-foreground md:text-xl">
+              FreshTrack combines cutting-edge AI with practical features to revolutionize how you manage food at home.
+            </p>
+          </div>
+        </div>
+        <div class="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+          <div class="card">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-green mb-2 feature-icon">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                <line x1="8" y1="7" x2="16" y2="7"></line>
+                <line x1="12" y1="17" x2="12" y2="7"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+                <line x1="8" y1="17" x2="16" y2="17"></line>
+              </svg>
+              <div class="card-title">Smart Scanning</div>
+              <div class="card-description">
+                Instantly scan receipts, barcodes, or take photos to add items to your inventory.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-green mb-2 feature-icon">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                <path d="M16 16h5v5"></path>
+              </svg>
+              <div class="card-title">Expiry Prediction</div>
+              <div class="card-description">
+                Our AI accurately predicts when your food will expire based on storage conditions.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-green mb-2 feature-icon">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <div class="card-title">Smart Alerts</div>
+              <div class="card-description">
+                Receive timely notifications before your food expires, with recipe suggestions to use it.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-12 md:py-24 lg:py-32" id="how-it-works">
+      <div class="container px-4 md:px-6">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <div class="space-y-2">
+            <h2 class="text-3xl font-bold tracking-tighter md:text-4xl text-white">How FreshTrack Works</h2>
+            <p class="max-w-[900px] text-muted-foreground md:text-xl">
+              Three simple steps to reduce food waste and save money.
+            </p>
+          </div>
+        </div>
+        <div class="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3">
+          <div class="flex flex-col items-center space-y-2 border rounded-lg p-6 text-center border-green step-card">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-green text-dark step-number">1</div>
+            <h3 class="text-xl font-bold text-white">Scan & Add</h3>
+            <p class="text-muted-foreground">
+              Quickly scan receipts, barcodes, or take photos to add items to your digital pantry.
+            </p>
+          </div>
+          <div class="flex flex-col items-center space-y-2 border rounded-lg p-6 text-center border-green step-card">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-green text-dark step-number">2</div>
+            <h3 class="text-xl font-bold text-white">Track & Monitor</h3>
+            <p class="text-muted-foreground">
+              Our AI monitors expiry dates and storage conditions to keep your inventory up-to-date.
+            </p>
+          </div>
+          <div class="flex flex-col items-center space-y-2 border rounded-lg p-6 text-center border-green step-card">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-green text-dark step-number">3</div>
+            <h3 class="text-xl font-bold text-white">Get Alerts & Recipes</h3>
+            <p class="text-muted-foreground">
+              Receive timely notifications with personalized recipe suggestions to use items before they expire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-green">
+    <div class="flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green">
+        <path d="M2 22c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+        <path d="M2 17c1.25-1.25 2.5-2.5 3.5-2.5 1.5 0 2.5 1.5 3.5 2.5 1.25 1.25 2.5 2.5 3.5 2.5 1.5 0 2.5-1.5 3.5-2.5 1.25-1.25 2.5-2.5 3.5-2.5 1 0 2.25 1.25 3.5 2.5"></path>
+      </svg>
+      <span class="text-lg font-semibold text-white">FreshTrack</span>
     </div>
-
-    <div class="div2">
-        <h1>Key Features</h1>
-    </div>
-
-    <div class="container1">
-        <div class="flexdiv1"> box 1 </div>
-        <div class="flexdiv1"> box 2 </div>
-        <div class="flexdiv1"> box 3 </div>
-    </div>
-
-    <div class="container2">
-        <div class="flexdiv1"> box 4 </div>
-        <div class="flexdiv1"> box 5 </div>
-        <div class="flexdiv1"> box 6 </div>
-    </div>
+    <p class="text-xs text-muted-foreground sm:ml-4">
+      &copy; <script>document.write(new Date().getFullYear())</script> FreshTrack. All rights reserved.
+    </p>
+    <nav class="sm:ml-auto flex gap-4 sm:gap-6">
+      <a class="text-xs hover:underline underline-offset-4 text-muted-foreground" href="#">
+        Terms of Service
+      </a>
+      <a class="text-xs hover:underline underline-offset-4 text-muted-foreground" href="#">
+        Privacy
+      </a>
+      <a class="text-xs hover:underline underline-offset-4 text-muted-foreground" href="#">
+        Contact
+      </a>
+    </nav>
+  </footer>
+  <script src="script.js"></script>
+  
 </body>
-
-<footer class="footer">
-    <div class="footer-container">
-        <p>&copy; 2024 Detox.ai. All Rights Reserved.</p>
-        <ul class="footer-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </div>
-</footer>
-
-
 </html>
